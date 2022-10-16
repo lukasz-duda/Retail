@@ -1,4 +1,5 @@
 ﻿using NServiceBus;
+using Sales.Commands;
 
 class Program
 {
@@ -15,6 +16,11 @@ class Program
         transport.ConnectionString("host=localhost");
         transport.UseConventionalRoutingTopology(QueueType.Quorum);
         var endpointInstance = await Endpoint.Start(endpointConfiguration)
+            .ConfigureAwait(false);
+        
+        Console.ReadLine();
+
+        await endpointInstance.SendLocal(new PlaceOrder { OrderId = Guid.NewGuid().ToString() })
             .ConfigureAwait(false);
         
         Console.ReadLine();
