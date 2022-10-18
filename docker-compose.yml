@@ -1,6 +1,6 @@
 version: '3.3'
 services:
-  message_bus:
+  message-bus:
     image: rabbitmq:3-management
     ports:
       - 5672:5672

@@ -1,5 +1,4 @@
 ﻿using NServiceBus;
-using Sales.Commands;
 
 class Program
 {
@@ -10,19 +9,16 @@ class Program
 
     static async Task AsyncMain()
     {
-        Console.WriteLine("Sales");
+        Console.Title = "Sales";
         var endpointConfiguration = new EndpointConfiguration("Sales");
+        endpointConfiguration.EnableInstallers();
         var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
         transport.ConnectionString("host=localhost");
         transport.UseConventionalRoutingTopology(QueueType.Quorum);
         var endpointInstance = await Endpoint.Start(endpointConfiguration)
             .ConfigureAwait(false);
-        
-        Console.ReadLine();
 
-        await endpointInstance.SendLocal(new PlaceOrder { OrderId = Guid.NewGuid().ToString() })
-            .ConfigureAwait(false);
-        
+        Console.WriteLine("Press Enter to exit...");
         Console.ReadLine();
 
         await endpointInstance.Stop()

@@ -6,13 +6,13 @@ const connection = new signalR.HubConnectionBuilder()
 
 
 async function placeOrder() {
-    const message = new Date().toLocaleTimeString();
-    await connection.invoke("PlaceOrder", `PlaceOrder ${message}`);
+    const orderId = self.crypto.randomUUID();
+    await connection.invoke("PlaceOrder", orderId);
 }
 
-connection.on("OrderPlaced", (message) => {
+connection.on("OrderPlaced", (orderId) => {
     const li = document.createElement("li");
-    li.textContent = `${message}`;
+    li.textContent = `OrderPlaced received, OrderId = ${orderId}`;
     document.getElementById("messages").appendChild(li);
 });
 

@@ -1,13 +1,22 @@
 using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
+using NServiceBus;
+using Sales.Messages.Commands;
 
 namespace Client.Hubs
 {
     public class RetailHub : Hub
     {
-        public async Task PlaceOrder(string message)
+        private readonly IMessageSession? messageSession;
+
+        public RetailHub(IMessageSession? messageSession)
         {
-            await Clients.Caller.SendAsync("OrderPlaced", $"{message} received");
+            this.messageSession = messageSession;
+        }
+
+        public async Task PlaceOrder(string orderId)
+        {
+            await messageSession.Send(new PlaceOrder { OrderId = orderId })
+                .ConfigureAwait(false);
         }
     }
 }
