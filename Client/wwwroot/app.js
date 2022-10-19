@@ -11,9 +11,10 @@ async function placeOrder() {
 }
 
 connection.on("OrderPlaced", (orderId) => {
-    const li = document.createElement("li");
-    li.textContent = `OrderPlaced received, OrderId = ${orderId}`;
-    document.getElementById("messages").appendChild(li);
+    const item = document.createElement("li");
+    item.classList.add('list-group-item')
+    item.textContent = `OrderPlaced received, OrderId = ${orderId}`;
+    document.getElementById("messages").appendChild(item);
 });
 
 connection.start();
