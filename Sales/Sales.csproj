@@ -17,4 +17,13 @@
     <ProjectReference Include="..\Sales.Messages\Sales.Messages.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
