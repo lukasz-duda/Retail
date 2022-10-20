@@ -1,0 +1,9 @@
+bin/
+obj/
+Dockerfile
+infrastructure.yml
+services.yml
+.gitignore
+.git/
+Retail.sln
+README.md

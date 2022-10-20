@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  sales:
+    build:
+      context: .
+      dockerfile: Sales/Dockerfile
+  client:
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+    ports:
+      - 80:80

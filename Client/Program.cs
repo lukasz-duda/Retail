@@ -10,7 +10,7 @@ builder.Host.UseNServiceBus(context =>
     var endpointConfiguration = new EndpointConfiguration("Client");
     endpointConfiguration.EnableInstallers();
     var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-    transport.ConnectionString("host=localhost");
+    transport.ConnectionString("host=message_bus");
     transport.UseConventionalRoutingTopology(QueueType.Quorum);
     transport.Routing().RouteToEndpoint(typeof(PlaceOrder), "Sales");
     return endpointConfiguration;

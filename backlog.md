@@ -1,0 +1,5 @@
+-   RabbitMQ host settings
+-   gRPC
+-   Visual Studio Code Remote Explorer
+-   SQL Server
+-   Mongo

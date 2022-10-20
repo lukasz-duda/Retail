@@ -1,27 +1,19 @@
-﻿using NServiceBus;
+﻿using Microsoft.Extensions.Hosting;
+using NServiceBus;
 
-class Program
-{
-    static void Main()
-    {
-        AsyncMain().GetAwaiter().GetResult();
-    }
+Console.Title = "Sales";
 
-    static async Task AsyncMain()
+var builder = Host.CreateDefaultBuilder(args)
+    .UseConsoleLifetime()
+    .UseNServiceBus(context =>
     {
-        Console.Title = "Sales";
         var endpointConfiguration = new EndpointConfiguration("Sales");
         endpointConfiguration.EnableInstallers();
         var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-        transport.ConnectionString("host=localhost");
+        transport.ConnectionString("host=message_bus");
         transport.UseConventionalRoutingTopology(QueueType.Quorum);
-        var endpointInstance = await Endpoint.Start(endpointConfiguration)
-            .ConfigureAwait(false);
+        return endpointConfiguration;
+    });
 
-        Console.WriteLine("Press Enter to exit...");
-        Console.ReadLine();
-
-        await endpointInstance.Stop()
-            .ConfigureAwait(false);
-    }
-}
+var app = builder.Build();
+app.Run();
