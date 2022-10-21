@@ -11,4 +11,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
 EXPOSE 80
 WORKDIR /app
 COPY --from=build /app/publish .
+COPY --from=build /src src/
 CMD dotnet Client.dll

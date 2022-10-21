@@ -1,4 +1,6 @@
--   gRPC
--   Visual Studio Code Remote Explorer
--   SQL Server
--   Mongo
+- gRPC
+- Visual Studio Code Remote Explorer
+- SQL Server
+- Mongo
+- webpack
+- babel
