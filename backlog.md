@@ -1,6 +1,7 @@
-- gRPC
+- TypeScript, webpack, babel
 - Visual Studio Code Remote Explorer
 - SQL Server
 - Mongo
-- webpack
-- babel
+- Outbox pattern
+- Error test case
+- gRPC
