@@ -1,7 +1,7 @@
+- Outbox pattern
 - TypeScript, webpack, babel
 - Visual Studio Code Remote Explorer
 - SQL Server
 - Mongo
-- Outbox pattern
 - Error test case
 - gRPC
