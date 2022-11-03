@@ -10,7 +10,6 @@
             "args": [],
             "cwd": "${workspaceFolder}/Sales",
             "stopAtEntry": false,
-            "console": "internalConsole",
             "env": {
                 "DOTNET_ENVIRONMENT": "local"
             }
