@@ -1,7 +1,5 @@
-- Outbox pattern
 - TypeScript, webpack, babel
-- Visual Studio Code Remote Explorer
-- SQL Server
 - Mongo
 - Error test case
 - gRPC
+- MassTransit
